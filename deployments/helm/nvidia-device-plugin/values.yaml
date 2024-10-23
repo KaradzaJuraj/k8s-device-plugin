@@ -17,6 +17,15 @@ config:
       version: v1
       flags:
         migStrategy: mixed
+# config:
+#   # ConfigMap name if pulling from an external ConfigMap
+#   name: ""
+#   # Set of named configs to build an integrated ConfigMap from
+#   map: {}
+#   # Default config name within the ConfigMap
+#   default: ""
+#   # List of fallback strategies to attempt if no config is selected and no default is provided
+  fallbackStrategies: ["named" , "single"]
 
 compatWithCPUManager: null
 migStrategy: null
