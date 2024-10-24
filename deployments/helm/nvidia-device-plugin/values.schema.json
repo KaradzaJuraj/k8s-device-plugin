@@ -61,10 +61,6 @@
           "type": "object"
         }
       },
-      "required": [
-        "map",
-        "fallbackStrategies"
-      ],
       "title": "config",
       "type": "object"
     },
@@ -78,9 +74,6 @@
           "type": "boolean"
         }
       },
-      "required": [
-        "enabled"
-      ],
       "title": "devicePlugin",
       "type": "object"
     },
@@ -128,9 +121,6 @@
               "type": "boolean"
             }
           },
-          "required": [
-            "privileged"
-          ],
           "title": "securityContext",
           "type": "object"
         },
@@ -141,14 +131,6 @@
           "type": "string"
         }
       },
-      "required": [
-        "enabled",
-        "nameOverride",
-        "namespaceOverride",
-        "noTimestamp",
-        "sleepInterval",
-        "securityContext"
-      ],
       "title": "gfd",
       "type": "object"
     },
@@ -200,9 +182,6 @@
           "type": "string"
         }
       },
-      "required": [
-        "root"
-      ],
       "title": "mps",
       "type": "object"
     },
@@ -237,9 +216,6 @@
                   "type": "array"
                 }
               },
-              "required": [
-                "extraLabelNs"
-              ],
               "title": "config",
               "type": "object"
             },
@@ -259,18 +235,10 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "name",
-                "create"
-              ],
               "title": "serviceAccount",
               "type": "object"
             }
           },
-          "required": [
-            "serviceAccount",
-            "config"
-          ],
           "title": "master",
           "type": "object"
         },
@@ -325,24 +293,14 @@
                           "type": "array"
                         }
                       },
-                      "required": [
-                        "deviceClassWhitelist",
-                        "deviceLabelFields"
-                      ],
                       "title": "pci",
                       "type": "object"
                     }
                   },
-                  "required": [
-                    "pci"
-                  ],
                   "title": "sources",
                   "type": "object"
                 }
               },
-              "required": [
-                "sources"
-              ],
               "title": "config",
               "type": "object"
             },
@@ -377,12 +335,6 @@
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "key",
-                      "operator",
-                      "value",
-                      "effect"
-                    ],
                     "type": "object"
                   },
                   {
@@ -413,12 +365,6 @@
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "key",
-                      "operator",
-                      "value",
-                      "effect"
-                    ],
                     "type": "object"
                   }
                 ],
@@ -429,20 +375,10 @@
               "type": "array"
             }
           },
-          "required": [
-            "tolerations",
-            "config"
-          ],
           "title": "worker",
           "type": "object"
         }
       },
-      "required": [
-        "nameOverride",
-        "enableNodeFeatureApi",
-        "master",
-        "worker"
-      ],
       "title": "nfd",
       "type": "object"
     },
@@ -456,14 +392,14 @@
   "order": [
     "allowDefaultNamespace",
     "gdsEnabled",
-    "mofedEnabled",
     "runtimeClassName",
     "image",
     "mps",
     "config",
     "gfd",
     "nfd",
-    "devicePlugin"
+    "devicePlugin",
+    "mofedEnabled"
   ],
   "type": "object"
 }
