@@ -8,12 +8,6 @@
       "title": "allowDefaultNamespace",
       "type": "boolean"
     },
-    "compatWithCPUManager": {
-      "default": "",
-      "required": [],
-      "title": "compatWithCPUManager",
-      "type": "string"
-    },
     "config": {
       "additionalProperties": false,
       "description": "Plugin configuration\nOnly one of \"name\" or \"map\" should ever be set for a given deployment.\nUse \"name\" to point to an external ConfigMap with a list of configurations.\nUse \"map\" to build an integrated ConfigMap from a set of configurations as\npart of this helm chart. An example of setting \"map\" might be:",
@@ -158,12 +152,6 @@
       "title": "gfd",
       "type": "object"
     },
-    "global": {
-      "description": "Global values are values that can be accessed from any chart or subchart by exactly the same name.",
-      "required": [],
-      "title": "global",
-      "type": "object"
-    },
     "image": {
       "additionalProperties": false,
       "properties": {
@@ -194,14 +182,6 @@
       ],
       "title": "image",
       "type": "object"
-    },
-    "imagePullSecrets": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "imagePullSecrets",
-      "type": "array"
     },
     "mofedEnabled": {
       "default": "false",
@@ -473,5 +453,17 @@
       "type": "string"
     }
   },
+  "order": [
+    "allowDefaultNamespace",
+    "gdsEnabled",
+    "mofedEnabled",
+    "runtimeClassName",
+    "image",
+    "mps",
+    "config",
+    "gfd",
+    "nfd",
+    "devicePlugin"
+  ],
   "type": "object"
 }
