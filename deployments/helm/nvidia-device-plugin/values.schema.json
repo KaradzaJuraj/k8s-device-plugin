@@ -1,327 +1,910 @@
 {
-  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
   "properties": {
-    "config": {
-      "type": "object",
+    "affinity": {
+      "additionalProperties": false,
       "properties": {
+        "nodeAffinity": {
+          "additionalProperties": false,
+          "properties": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "additionalProperties": false,
+              "properties": {
+                "nodeSelectorTerms": {
+                  "items": {
+                    "anyOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "matchExpressions": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "key": {
+                                      "default": "feature.node.kubernetes.io/pci-10de.present",
+                                      "required": [],
+                                      "title": "key",
+                                      "type": "string"
+                                    },
+                                    "operator": {
+                                      "default": "In",
+                                      "required": [],
+                                      "title": "operator",
+                                      "type": "string"
+                                    },
+                                    "values": {
+                                      "items": {
+                                        "anyOf": [
+                                          {
+                                            "required": [],
+                                            "type": "string"
+                                          }
+                                        ],
+                                        "required": []
+                                      },
+                                      "required": [],
+                                      "title": "values",
+                                      "type": "array"
+                                    }
+                                  },
+                                  "required": [
+                                    "key",
+                                    "operator",
+                                    "values"
+                                  ],
+                                  "type": "object"
+                                }
+                              ],
+                              "required": []
+                            },
+                            "required": [],
+                            "title": "matchExpressions",
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "matchExpressions"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "matchExpressions": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "key": {
+                                      "default": "feature.node.kubernetes.io/cpu-model.vendor_id",
+                                      "required": [],
+                                      "title": "key",
+                                      "type": "string"
+                                    },
+                                    "operator": {
+                                      "default": "In",
+                                      "required": [],
+                                      "title": "operator",
+                                      "type": "string"
+                                    },
+                                    "values": {
+                                      "items": {
+                                        "anyOf": [
+                                          {
+                                            "required": [],
+                                            "type": "string"
+                                          }
+                                        ],
+                                        "required": []
+                                      },
+                                      "required": [],
+                                      "title": "values",
+                                      "type": "array"
+                                    }
+                                  },
+                                  "required": [
+                                    "key",
+                                    "operator",
+                                    "values"
+                                  ],
+                                  "type": "object"
+                                }
+                              ],
+                              "required": []
+                            },
+                            "required": [],
+                            "title": "matchExpressions",
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "matchExpressions"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "matchExpressions": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "key": {
+                                      "default": "nvidia.com/gpu.present",
+                                      "required": [],
+                                      "title": "key",
+                                      "type": "string"
+                                    },
+                                    "operator": {
+                                      "default": "In",
+                                      "required": [],
+                                      "title": "operator",
+                                      "type": "string"
+                                    },
+                                    "values": {
+                                      "items": {
+                                        "anyOf": [
+                                          {
+                                            "required": [],
+                                            "type": "string"
+                                          }
+                                        ],
+                                        "required": []
+                                      },
+                                      "required": [],
+                                      "title": "values",
+                                      "type": "array"
+                                    }
+                                  },
+                                  "required": [
+                                    "key",
+                                    "operator",
+                                    "values"
+                                  ],
+                                  "type": "object"
+                                }
+                              ],
+                              "required": []
+                            },
+                            "required": [],
+                            "title": "matchExpressions",
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "matchExpressions"
+                        ],
+                        "type": "object"
+                      }
+                    ],
+                    "required": []
+                  },
+                  "required": [],
+                  "title": "nodeSelectorTerms",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "nodeSelectorTerms"
+              ],
+              "title": "requiredDuringSchedulingIgnoredDuringExecution",
+              "type": "object"
+            }
+          },
+          "required": [
+            "requiredDuringSchedulingIgnoredDuringExecution"
+          ],
+          "title": "nodeAffinity",
+          "type": "object"
+        }
+      },
+      "required": [
+        "nodeAffinity"
+      ],
+      "title": "affinity",
+      "type": "object"
+    },
+    "allowDefaultNamespace": {
+      "default": false,
+      "required": [],
+      "title": "allowDefaultNamespace",
+      "type": "boolean"
+    },
+    "cdi": {
+      "additionalProperties": false,
+      "properties": {
+        "nvidiaHookPath": {
+          "default": "null",
+          "description": "nvidiaHookPath specifies the path to the nvidia-cdi-hook or nvidia-ctk executables on the host.\nThis is required to ensure that the generated CDI specification refers to the correct CDI hooks.",
+          "required": [],
+          "title": "nvidiaHookPath",
+          "type": "null"
+        }
+      },
+      "required": [
+        "nvidiaHookPath"
+      ],
+      "title": "cdi",
+      "type": "object"
+    },
+    "compatWithCPUManager": {
+      "default": "null",
+      "required": [],
+      "title": "compatWithCPUManager",
+      "type": "null"
+    },
+    "config": {
+      "additionalProperties": false,
+      "description": "Plugin configuration\nOnly one of \"name\" or \"map\" should ever be set for a given deployment.\nUse \"name\" to point to an external ConfigMap with a list of configurations.\nUse \"map\" to build an integrated ConfigMap from a set of configurations as\npart of this helm chart. An example of setting \"map\" might be:",
+      "properties": {
+        "fallbackStrategies": {
+          "items": {
+            "anyOf": [
+              {
+                "required": [],
+                "type": "string"
+              },
+              {
+                "required": [],
+                "type": "string"
+              }
+            ],
+            "required": []
+          },
+          "required": [],
+          "title": "fallbackStrategies",
+          "type": "array"
+        },
         "map": {
-          "type": "object",
+          "additionalProperties": false,
           "properties": {
             "default": {
-              "type": "string"
-            },
-            "mig-single": {
+              "default": "version: v1\nflags:\n  migStrategy: none",
+              "required": [],
+              "title": "default",
               "type": "string"
             },
             "mig-mixed": {
+              "default": "version: v1\nflags:\n  migStrategy: mixed",
+              "required": [],
+              "title": "mig-mixed",
+              "type": "string"
+            },
+            "mig-single": {
+              "default": "version: v1\nflags:\n  migStrategy: single",
+              "required": [],
+              "title": "mig-single",
               "type": "string"
             }
-          }
+          },
+          "required": [
+            "default",
+            "mig-single",
+            "mig-mixed"
+          ],
+          "title": "map",
+          "type": "object"
         }
-      }
+      },
+      "required": [
+        "map",
+        "fallbackStrategies"
+      ],
+      "title": "config",
+      "type": "object"
     },
-    "compatWithCPUManager": {
-      "type": "null"
-    },
-    "migStrategy": {
-      "type": "null"
-    },
-    "failOnInitError": {
-      "type": "null"
-    },
-    "deviceListStrategy": {
+    "deviceDiscoveryStrategy": {
+      "default": "null",
+      "required": [],
+      "title": "deviceDiscoveryStrategy",
       "type": "null"
     },
     "deviceIDStrategy": {
+      "default": "null",
+      "required": [],
+      "title": "deviceIDStrategy",
       "type": "null"
     },
-    "nvidiaDriverRoot": {
-      "type": "null"
-    },
-    "gdsEnabled": {
-      "type": "null"
-    },
-    "mofedEnabled": {
-      "type": "null"
-    },
-    "deviceDiscoveryStrategy": {
-      "type": "null"
-    },
-    "nameOverride": {
-      "type": "string"
-    },
-    "fullnameOverride": {
-      "type": "string"
-    },
-    "namespaceOverride": {
-      "type": "string"
-    },
-    "selectorLabelsOverride": {
-      "type": "object",
-      "properties": {}
-    },
-    "allowDefaultNamespace": {
-      "type": "boolean"
-    },
-    "imagePullSecrets": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "image": {
-      "type": "object",
-      "properties": {
-        "repository": {
-          "type": "string"
-        },
-        "pullPolicy": {
-          "type": "string"
-        },
-        "tag": {
-          "type": "string"
-        }
-      }
-    },
-    "updateStrategy": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "podAnnotations": {
-      "type": "object",
-      "properties": {}
-    },
-    "podSecurityContext": {
-      "type": "object",
-      "properties": {}
-    },
-    "securityContext": {
-      "type": "object",
-      "properties": {}
-    },
-    "resources": {
-      "type": "object",
-      "properties": {}
-    },
-    "nodeSelector": {
-      "type": "object",
-      "properties": {}
-    },
-    "affinity": {
-      "type": "object",
-      "properties": {
-        "nodeAffinity": {
-          "type": "object",
-          "properties": {
-            "requiredDuringSchedulingIgnoredDuringExecution": {
-              "type": "object",
-              "properties": {
-                "nodeSelectorTerms": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "matchExpressions": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "key": {
-                              "type": "string"
-                            },
-                            "operator": {
-                              "type": "string"
-                            },
-                            "values": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "tolerations": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "string"
-          },
-          "operator": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          },
-          "effect": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "priorityClassName": {
-      "type": "string"
-    },
-    "runtimeClassName": {
+    "deviceListStrategy": {
+      "default": "null",
+      "required": [],
+      "title": "deviceListStrategy",
       "type": "null"
     },
     "devicePlugin": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "enabled": {
+          "default": true,
+          "required": [],
+          "title": "enabled",
           "type": "boolean"
         }
-      }
+      },
+      "required": [
+        "enabled"
+      ],
+      "title": "devicePlugin",
+      "type": "object"
+    },
+    "failOnInitError": {
+      "default": "null",
+      "required": [],
+      "title": "failOnInitError",
+      "type": "null"
+    },
+    "fullnameOverride": {
+      "default": "",
+      "required": [],
+      "title": "fullnameOverride",
+      "type": "string"
+    },
+    "gdsEnabled": {
+      "default": "null",
+      "required": [],
+      "title": "gdsEnabled",
+      "type": "null"
     },
     "gfd": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "enabled": {
+          "default": false,
+          "required": [],
+          "title": "enabled",
           "type": "boolean"
         },
         "nameOverride": {
+          "default": "gpu-feature-discovery",
+          "required": [],
+          "title": "nameOverride",
           "type": "string"
         },
         "namespaceOverride": {
+          "default": "",
+          "required": [],
+          "title": "namespaceOverride",
           "type": "string"
         },
         "noTimestamp": {
-          "type": "null"
-        },
-        "sleepInterval": {
+          "default": "null",
+          "required": [],
+          "title": "noTimestamp",
           "type": "null"
         },
         "securityContext": {
-          "type": "object",
+          "additionalProperties": false,
           "properties": {
             "privileged": {
+              "default": true,
+              "description": "privileged access is required for the gpu-feature-discovery to access the\nvgpu info on a host.\nTODO: This should be optional and detected automatically.",
+              "required": [],
+              "title": "privileged",
               "type": "boolean"
             }
-          }
+          },
+          "required": [
+            "privileged"
+          ],
+          "title": "securityContext",
+          "type": "object"
+        },
+        "sleepInterval": {
+          "default": "null",
+          "required": [],
+          "title": "sleepInterval",
+          "type": "null"
         }
-      }
+      },
+      "required": [
+        "enabled",
+        "nameOverride",
+        "namespaceOverride",
+        "noTimestamp",
+        "sleepInterval",
+        "securityContext"
+      ],
+      "title": "gfd",
+      "type": "object"
     },
-    "nfd": {
-      "type": "object",
+    "global": {
+      "description": "Global values are values that can be accessed from any chart or subchart by exactly the same name.",
+      "required": [],
+      "title": "global",
+      "type": "object"
+    },
+    "image": {
+      "additionalProperties": false,
       "properties": {
-        "nameOverride": {
+        "pullPolicy": {
+          "default": "IfNotPresent",
+          "required": [],
+          "title": "pullPolicy",
           "type": "string"
         },
+        "repository": {
+          "default": "nvcr.io/nvidia/k8s-device-plugin",
+          "required": [],
+          "title": "repository",
+          "type": "string"
+        },
+        "tag": {
+          "default": "",
+          "description": "Overrides the image tag whose default is the chart appVersion.",
+          "required": [],
+          "title": "tag",
+          "type": "string"
+        }
+      },
+      "required": [
+        "repository",
+        "pullPolicy",
+        "tag"
+      ],
+      "title": "image",
+      "type": "object"
+    },
+    "imagePullSecrets": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "imagePullSecrets",
+      "type": "array"
+    },
+    "migStrategy": {
+      "default": "null",
+      "required": [],
+      "title": "migStrategy",
+      "type": "null"
+    },
+    "mofedEnabled": {
+      "default": "null",
+      "required": [],
+      "title": "mofedEnabled",
+      "type": "null"
+    },
+    "mps": {
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "default": "/run/nvidia/mps",
+          "description": "root specifies the location where files and folders for managing MPS will\nbe created. This includes a daemon-specific /dev/shm and pipe and log\ndirectories.\nPipe directories will be created at {{ mps.root }}/{{ .ResourceName }}",
+          "required": [],
+          "title": "root",
+          "type": "string"
+        }
+      },
+      "required": [
+        "root"
+      ],
+      "title": "mps",
+      "type": "object"
+    },
+    "nameOverride": {
+      "default": "",
+      "required": [],
+      "title": "nameOverride",
+      "type": "string"
+    },
+    "namespaceOverride": {
+      "default": "",
+      "required": [],
+      "title": "namespaceOverride",
+      "type": "string"
+    },
+    "nfd": {
+      "additionalProperties": false,
+      "description": "Helm dependency",
+      "properties": {
         "enableNodeFeatureApi": {
+          "default": false,
+          "required": [],
+          "title": "enableNodeFeatureApi",
           "type": "boolean"
         },
         "master": {
-          "type": "object",
+          "additionalProperties": false,
           "properties": {
-            "serviceAccount": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "create": {
-                  "type": "boolean"
-                }
-              }
-            },
             "config": {
-              "type": "object",
+              "additionalProperties": false,
               "properties": {
                 "extraLabelNs": {
-                  "type": "array",
                   "items": {
-                    "type": "string"
-                  }
+                    "anyOf": [
+                      {
+                        "required": [],
+                        "type": "string"
+                      }
+                    ],
+                    "required": []
+                  },
+                  "required": [],
+                  "title": "extraLabelNs",
+                  "type": "array"
                 }
-              }
+              },
+              "required": [
+                "extraLabelNs"
+              ],
+              "title": "config",
+              "type": "object"
+            },
+            "serviceAccount": {
+              "additionalProperties": false,
+              "properties": {
+                "create": {
+                  "default": true,
+                  "required": [],
+                  "title": "create",
+                  "type": "boolean"
+                },
+                "name": {
+                  "default": "node-feature-discovery",
+                  "required": [],
+                  "title": "name",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "create"
+              ],
+              "title": "serviceAccount",
+              "type": "object"
             }
-          }
+          },
+          "required": [
+            "serviceAccount",
+            "config"
+          ],
+          "title": "master",
+          "type": "object"
+        },
+        "nameOverride": {
+          "default": "node-feature-discovery",
+          "required": [],
+          "title": "nameOverride",
+          "type": "string"
         },
         "worker": {
-          "type": "object",
+          "additionalProperties": false,
           "properties": {
-            "tolerations": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "key": {
-                    "type": "string"
-                  },
-                  "operator": {
-                    "type": "string"
-                  },
-                  "value": {
-                    "type": "string"
-                  },
-                  "effect": {
-                    "type": "string"
-                  }
-                }
-              }
-            },
             "config": {
-              "type": "object",
+              "additionalProperties": false,
               "properties": {
                 "sources": {
-                  "type": "object",
+                  "additionalProperties": false,
                   "properties": {
                     "pci": {
-                      "type": "object",
+                      "additionalProperties": false,
                       "properties": {
                         "deviceClassWhitelist": {
-                          "type": "array",
                           "items": {
-                            "type": "string"
-                          }
+                            "anyOf": [
+                              {
+                                "required": [],
+                                "type": "string"
+                              },
+                              {
+                                "required": [],
+                                "type": "string"
+                              }
+                            ],
+                            "required": []
+                          },
+                          "required": [],
+                          "title": "deviceClassWhitelist",
+                          "type": "array"
                         },
                         "deviceLabelFields": {
-                          "type": "array",
                           "items": {
-                            "type": "string"
-                          }
+                            "anyOf": [
+                              {
+                                "required": [],
+                                "type": "string"
+                              }
+                            ],
+                            "required": []
+                          },
+                          "required": [],
+                          "title": "deviceLabelFields",
+                          "type": "array"
                         }
-                      }
+                      },
+                      "required": [
+                        "deviceClassWhitelist",
+                        "deviceLabelFields"
+                      ],
+                      "title": "pci",
+                      "type": "object"
                     }
-                  }
+                  },
+                  "required": [
+                    "pci"
+                  ],
+                  "title": "sources",
+                  "type": "object"
                 }
-              }
+              },
+              "required": [
+                "sources"
+              ],
+              "title": "config",
+              "type": "object"
+            },
+            "tolerations": {
+              "items": {
+                "anyOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "effect": {
+                        "default": "NoSchedule",
+                        "required": [],
+                        "title": "effect",
+                        "type": "string"
+                      },
+                      "key": {
+                        "default": "node-role.kubernetes.io/master",
+                        "required": [],
+                        "title": "key",
+                        "type": "string"
+                      },
+                      "operator": {
+                        "default": "Equal",
+                        "required": [],
+                        "title": "operator",
+                        "type": "string"
+                      },
+                      "value": {
+                        "default": "",
+                        "required": [],
+                        "title": "value",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "key",
+                      "operator",
+                      "value",
+                      "effect"
+                    ],
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "effect": {
+                        "default": "NoSchedule",
+                        "required": [],
+                        "title": "effect",
+                        "type": "string"
+                      },
+                      "key": {
+                        "default": "nvidia.com/gpu",
+                        "required": [],
+                        "title": "key",
+                        "type": "string"
+                      },
+                      "operator": {
+                        "default": "Equal",
+                        "required": [],
+                        "title": "operator",
+                        "type": "string"
+                      },
+                      "value": {
+                        "default": "present",
+                        "required": [],
+                        "title": "value",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "key",
+                      "operator",
+                      "value",
+                      "effect"
+                    ],
+                    "type": "object"
+                  }
+                ],
+                "required": []
+              },
+              "required": [],
+              "title": "tolerations",
+              "type": "array"
             }
-          }
+          },
+          "required": [
+            "tolerations",
+            "config"
+          ],
+          "title": "worker",
+          "type": "object"
         }
-      }
+      },
+      "required": [
+        "nameOverride",
+        "enableNodeFeatureApi",
+        "master",
+        "worker"
+      ],
+      "title": "nfd",
+      "type": "object"
     },
-    "mps": {
-      "type": "object",
+    "nodeSelector": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "nodeSelector",
+      "type": "object"
+    },
+    "nvidiaDriverRoot": {
+      "default": "null",
+      "required": [],
+      "title": "nvidiaDriverRoot",
+      "type": "null"
+    },
+    "podAnnotations": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "podAnnotations",
+      "type": "object"
+    },
+    "podSecurityContext": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "podSecurityContext",
+      "type": "object"
+    },
+    "priorityClassName": {
+      "default": "system-node-critical",
+      "description": "Mark this pod as a critical add-on; when enabled, the critical add-on\nscheduler reserves resources for critical add-on pods so that they can\nbe rescheduled after a failure.\nSee https://kubernetes.io/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/",
+      "required": [],
+      "title": "priorityClassName",
+      "type": "string"
+    },
+    "resources": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "resources",
+      "type": "object"
+    },
+    "runtimeClassName": {
+      "default": "null",
+      "required": [],
+      "title": "runtimeClassName",
+      "type": "null"
+    },
+    "securityContext": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "securityContext",
+      "type": "object"
+    },
+    "selectorLabelsOverride": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "selectorLabelsOverride",
+      "type": "object"
+    },
+    "tolerations": {
+      "items": {
+        "anyOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "default": "CriticalAddonsOnly",
+                "required": [],
+                "title": "key",
+                "type": "string"
+              },
+              "operator": {
+                "default": "Exists",
+                "required": [],
+                "title": "operator",
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "operator"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "effect": {
+                "default": "NoSchedule",
+                "required": [],
+                "title": "effect",
+                "type": "string"
+              },
+              "key": {
+                "default": "nvidia.com/gpu",
+                "required": [],
+                "title": "key",
+                "type": "string"
+              },
+              "operator": {
+                "default": "Exists",
+                "required": [],
+                "title": "operator",
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "operator",
+              "effect"
+            ],
+            "type": "object"
+          }
+        ],
+        "required": []
+      },
+      "required": [],
+      "title": "tolerations",
+      "type": "array"
+    },
+    "updateStrategy": {
+      "additionalProperties": false,
       "properties": {
-        "root": {
+        "type": {
+          "default": "RollingUpdate",
+          "required": [],
+          "title": "type",
           "type": "string"
         }
-      }
-    },
-    "cdi": {
-      "type": "object",
-      "properties": {
-        "nvidiaHookPath": {
-          "type": "null"
-        }
-      }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "updateStrategy",
+      "type": "object"
     }
-  }
-  
+  },
+  "required": [
+    "config",
+    "compatWithCPUManager",
+    "migStrategy",
+    "failOnInitError",
+    "deviceListStrategy",
+    "deviceIDStrategy",
+    "nvidiaDriverRoot",
+    "gdsEnabled",
+    "mofedEnabled",
+    "deviceDiscoveryStrategy",
+    "nameOverride",
+    "fullnameOverride",
+    "namespaceOverride",
+    "selectorLabelsOverride",
+    "allowDefaultNamespace",
+    "imagePullSecrets",
+    "image",
+    "updateStrategy",
+    "podAnnotations",
+    "podSecurityContext",
+    "securityContext",
+    "resources",
+    "nodeSelector",
+    "affinity",
+    "tolerations",
+    "priorityClassName",
+    "runtimeClassName",
+    "devicePlugin",
+    "gfd",
+    "nfd",
+    "mps",
+    "cdi"
+  ],
+  "type": "object"
 }
